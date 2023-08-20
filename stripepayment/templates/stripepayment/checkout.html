@@ -1,0 +1,22 @@
+{% extends 'stripepayment/base.html' %}
+{% load static %}
+{% block content %}
+      <form id="payment-form">
+          {% csrf_token %}
+      <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+      </div>
+          <div class="col-md-10">
+               <h1>Name: {{ object.name }}</h1>
+               <p>Price: {{ object.price }}</p>
+               <h1>{{ object.id }}</h1>
+          </div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <div id="payment-message" class="hidden"></div>
+      </form>
+    <script src="{% static 'js/checkout.js' %}" type="text/javascript" defer></script>
+
+{% endblock content %}
